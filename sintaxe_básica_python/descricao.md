@@ -33,6 +33,23 @@ Fomos contratados por um grande banco para desenvolver seu novo sistema. Esse ba
   - Os valores devem ser exibidos no formato **R$ xxx.xx**, por exemplo:
     - 1500.45 = R$ 1500.45
 
+## Nova Funcionalidade: Limite de Transações Diárias com Registro de Data e Hora
+
+Com os novos conhecimentos adquiridos sobre manipulação de **data** e **hora**, foi adicionado um novo requisito ao sistema:
+
+1. **Limite de Transações Diárias:**
+   - Estabeleça um limite de **10 transações** diárias para cada conta.
+   - O sistema deve monitorar as transações realizadas em um mesmo dia e impedir que mais de 10 transações sejam feitas.
+
+2. **Mensagem de Excedente:**
+   - Caso o usuário tente realizar uma transação após atingir o limite diário, o sistema deve informar que ele **excedeu o número de transações permitidas** para aquele dia.
+
+3. **Extrato de Transações:**
+   - Todas as transações devem ser registradas com a **data e hora** em que foram realizadas.
+   - No extrato da conta, deve ser exibida a lista completa de transações com os respectivos registros de data e hora.
+
+
+
 ## Solução Proposta
 
 A implementação foi feita utilizando a linguagem Python, aproveitando as funcionalidades básicas para controle de fluxo e armazenamento dos dados. Para cada operação, são realizadas as seguintes etapas:
