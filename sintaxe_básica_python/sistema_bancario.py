@@ -28,7 +28,7 @@ def operacao_deposito(valor):
         print("Digite um valor válido! ")
 
     else:
-        transacoes.append({'valor':valor, 'data': data_hora_atual})
+        transacoes.append({'valor':valor, 'data': data_hora_atual, 'tipo':"depósito"})
         saldo += valor
         extrato += f"Depósito: R$ {valor:.2f}\n"
         print(f"Depósito de R$ {valor:.2f} realizado com sucesso!")
@@ -77,24 +77,22 @@ def calcular_saldo():
 ###### Operação de extrato ######
 def mostrar_extrato():
     global extrato
-    print("\n=========== EXTRATO ===========")
-    print("Não foram realizadas movimentações." if not extrato else extrato)
-    print(f"Saldo atual: R$ {saldo:.2f}")
-    print("===============================")
+
     if not transacoes:
         print("Não foram realizadas transações")
     else:
+        print("\n=========== EXTRATO ===========")
         for transacao in transacoes:
             valor = transacao['valor']
             tipo = transacao['tipo']
             data_hora = transacao['data'].strftime("%d-%m-%Y %H:%M:%S")
-            print(f"{tipo.capitalize()}: R$ {valor:.2f} - Data e Hora: {data_hora}")
+            print(f"{tipo.capitalize()}: R$ {valor:.2f} - Data e Hora da operação: {data_hora}")
         print(f"\nSaldo atual: R$ {calcular_saldo():.2f}")
 
 
 while True:
     print(
-    """Qual operação você deseja realizar?
+    """Qual operação você deseja realizar? Digite a letra correspondente
         [d] - Depositar,
         [s] - Sacar,
         [e] - extrato,
@@ -111,10 +109,7 @@ while True:
         operacao_saque(valor)
 
     elif opcao == "e":
-        print("\n=========== EXTRATO ===========")
-        print("Não foram realizadas movimentações." if not extrato else extrato)
-        print(f"Saldo atual: R$ {saldo:.2f}")
-        print("===============================")
+        mostrar_extrato()
 
     elif opcao == "f":
         print("Finalizando programa. ")
